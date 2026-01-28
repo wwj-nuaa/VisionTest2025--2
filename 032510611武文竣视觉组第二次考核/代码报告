@@ -1,0 +1,23 @@
+1. 基础对象模型
+
+    Object：公共基类，管理 ID、当前位置/朝向、可移动标记；若 movable=true，使用 exprtk 驱动 movement 的 x/y/dir 分量。
+    Target：抽象目标，包含宽度、GetBounds()（返回端点）、虚析构和 describe()。
+    enum：ColoredObject::ObjectColor，ArmorSide,AmmoType,Matarial 及其字符串转换。
+    mathtool:角度归一化、距离、旋转、射线-线段相交、朝向换算。
+	
+2. 目标派生类
+
+    ArmorPlate：颜色、编号、所属边；单面击打（外法向量点积 < 0）（空）；持有宿主弱引用；位置由宿主姿态计算，不从 YAML 取绝对坐标。
+    EnergyMechanism：可激活状态；命中提供伤害加成（倍数、持续时间可配置，缺省取全局）。
+    Obstacle：遮挡体，含材质/可破坏性属性，仅用于视线遮挡。
+
+3. 机器人层级与姿态
+
+    Robot：继承 Object 与 ColoredObject，包含长宽、云台相对角、底盘小陀螺函数（空），持有装甲板并可 UpdateArmors()（空）（底盘旋转 -> 世界旋转）。
+    EnemyRobot：血量/最大血量，可被伤害；装甲板自 YAML 列表创建并随姿态更新。
+    SentryRobot：我方哨兵，负责移动、开火、伤害加成；支持云台调整。
+                SentryRobot 维护 totalTargetsDetected、instanceCount，提供查询方法。
+                友元 operator<< 输出哨兵摘要。
+                SentryRobot::fire()（空） 与 fire(AmmoType)（空）；move(length, direction)；changeDirection(changedRad)。
+
+    不清楚main函数中要写什么，只进行了基础框架构建，其中部分函数为空函数，没有配置yaml文件

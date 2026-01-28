@@ -1,0 +1,3 @@
+/home/wwj817/桌面/032510611武文竣视觉组第二次考核/build/CMakeFiles/032510611.dir
+/home/wwj817/桌面/032510611武文竣视觉组第二次考核/build/CMakeFiles/edit_cache.dir
+/home/wwj817/桌面/032510611武文竣视觉组第二次考核/build/CMakeFiles/rebuild_cache.dir

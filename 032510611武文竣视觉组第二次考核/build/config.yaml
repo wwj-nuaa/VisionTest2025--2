@@ -1,0 +1,8 @@
+obstacles:
+  - x: 20.0
+    y: 30.0
+    dir: 0.0
+    width: 2.0
+    height: 1.0
+    material: "METAL"
+    destructible: true

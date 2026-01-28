@@ -1,0 +1,3 @@
+file(REMOVE_RECURSE
+  "lib032510611.a"
+)
